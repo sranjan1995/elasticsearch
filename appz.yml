@@ -1,0 +1,31 @@
+app:
+  name: AppzElasticsearch
+  code: AES
+  notify: appz@cloudbourne.co
+
+build:
+  version: 3.1
+  env: DEV
+  build_file: none
+  output_files: output/*.zip
+  image_template: elasticsearch-7.9
+  image_name: alpha/elasticsearch
+
+deploy:
+  context: alpha/DEV
+  type: elasticsearch7  
+  replicas: 1
+  port:
+  - 9200
+  - 9300
+
+volumes:
+- claim: elasticsearch-data
+  mount: /appz/data
+  name: elasticsearch-data
+
+monitor:
+  notify: appzops@cloudbourne.co      
+
+properties:
+  revision : 02
