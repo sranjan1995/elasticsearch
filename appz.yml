@@ -4,7 +4,7 @@ app:
   notify: appz@cloudbourne.co
 
 build:
-  version: 3.1
+  version: 7.9
   env: DEV
   build_file: none
   output_files: output/*.zip
@@ -13,7 +13,7 @@ build:
 
 deploy:
   context: alpha/DEV
-  type: elasticsearch7  
+  type: elasticsearch  
   replicas: 1
   port:
   - 9200
