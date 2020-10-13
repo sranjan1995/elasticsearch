@@ -13,7 +13,7 @@ build:
 
 deploy:
   context: alpha/DEV
-  type: elasticsearch  
+  type: elasticsearch6  
   replicas: 1
   port:
   - 9200
@@ -23,9 +23,12 @@ volumes:
 - claim: elasticsearch-data
   mount: /appz/data
   name: elasticsearch-data
+  size: 20Gi
+  mode: ReadWriteOnce
+  class: microk8s-hostpath
 
 monitor:
   notify: appzops@cloudbourne.co      
 
 properties:
-  revision : 02
+  revision : 03
